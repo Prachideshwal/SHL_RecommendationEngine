@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from retriever.recommender import recommend
+import os
 
 app = FastAPI(
     title="SHL Assessment Recommendation Engine",
@@ -26,3 +27,9 @@ def recommend_api(request: RequestModel):
         "input_query": request.query,
         "recommendations": results
     }
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("api.main:app", host="0.0.0.0", port=port)
