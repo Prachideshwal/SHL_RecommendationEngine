@@ -8,7 +8,7 @@ query = st.text_input("Enter job role or skills:")
 if st.button("Get Recommendations"):
 
     response = requests.post(
-        "http://127.0.0.1:8000/recommend",
+        "phttps://recommendationengine-backend.onrender.com/recommend",
         json={"query": query}
     )
 
